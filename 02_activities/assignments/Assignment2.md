@@ -14,8 +14,8 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-two`.
-- [ ] Ensure that the repository is public.
+- [X] Create a branch called `assignment-two`.
+- [X] Ensure that the repository is public.
 - [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
 - [ ] Verify that the link is accessible in a private browser window.
 
@@ -55,6 +55,18 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 
 ```
 Your answer...
+
+Type 1 (Overwrite)
+
+In this architecture, the customer’s address is stored directly in the Customer table (or a related one-to-one CUSTOMER_ADDRESS table). Whenever the address changes, the record is updated in place. This means the previous address is lost, and only the most recent address is available.
+
+Type 2 (History Retained)
+
+In this architecture, the relationship between Customer and Address is modeled as one-to-many (a customer can have multiple addresses over time). To achieve this, we create a separate CUSTOMER_ADDRESS table that stores all historical addresses linked to each customer.
+	•	The table contains both customer_id and address_id along with additional fields such as effective start date, effective end date, or a “current” flag.
+	•	In the Customer table, we have to include a current_address_id field pointing to the most up-to-date address.
+
+
 ```
 
 ***
